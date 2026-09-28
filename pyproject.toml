@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "security-review-agent"
+version = "0.1.0"
+description = "A small local AI security review agent for Python projects"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "bandit>=1.8,<2",
+  "mcp>=1.2,<2",
+  "ollama>=0.4,<1",
+  "pydantic>=2,<3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+security-review = "security_review.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
